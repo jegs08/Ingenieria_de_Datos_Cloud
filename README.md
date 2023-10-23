@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>Supermayorista con GCP <b><i><a href="https://es.wikipedia.org/wiki/Esquema_en_estrella)](https://es.wikipedia.org/wiki/Esquema_en_estrella" target="_blank">[Modelo Estrella]</a></i></b></h1>
+  <h1>Supermayorista con GCP <b><i><a href="[https://es.wikipedia.org/wiki/Esquema_en_estrella)](https://es.wikipedia.org/wiki/Esquema_en_estrella]" target="_blank">[Modelo Estrella]</a></i></b></h1>
 </div>
 
 <div align="center"> 
