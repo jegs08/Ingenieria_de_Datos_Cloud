@@ -1,0 +1,242 @@
+SELECT * FROM `analytics_prod_mayorista_003.DIM_BANCO`
+
+CREATE TABLE `analytics_prod_mayorista_003.DIM_BANCO`(
+  BANCO_KEY INT64,
+  COD_BANCO STRING(7),
+  NOMBRE_BANCO STRING(65),
+  COMISION FLOAT64
+)
+
+INSERT INTO `analytics_prod_mayorista_003.DIM_BANCO` (BANCO_KEY,COD_BANCO, NOMBRE_BANCO, COMISION)
+SELECT
+    ROW_NUMBER() OVER () AS BANCO_KEY,
+    COD_BANCO,
+    NOMBRE_BANCO,
+    CAST(COMISION AS FLOAT64) AS COMISION
+    FROM `raw_prod_mayorista_001.raw_banco`
+
+
+
+
+----------------------
+
+
+SELECT * FROM `raw_prod_mayorista_001.raw_vendedor`
+
+
+CREATE TABLE `analytics_prod_mayorista_003.DIM_VENDEDOR`(
+  VENDEDOR_KEY INT64,
+  CODIGO_VENDEDOR STRING(9),
+  NOMBRE_VENDEDOR STRING(65),
+  SUPERVISOR INT64
+)
+
+INSERT INTO `analytics_prod_mayorista_003.DIM_VENDEDOR` (VENDEDOR_KEY,CODIGO_VENDEDOR, NOMBRE_VENDEDOR, SUPERVISOR)
+  SELECT
+    ROW_NUMBER() OVER () AS VENDEDOR_KEY,
+    COD_VENDEDOR,
+    CONCAT(apellido_vendedor,', ',nombre_supervisor) NOMBRE_VENDEDOR,
+    CASE
+    WHEN REGEXP_CONTAINS(SUPERVISOR, r'^VEND0*([1-9]\d*)$') THEN CAST(REGEXP_EXTRACT(SUPERVISOR, r'^VEND0*([1-9]\d*)$') AS INT64)
+    ELSE NULL
+  END AS CODIGO
+  FROM `raw_prod_mayorista_001.raw_vendedor`
+
+
+----------------------
+
+SELECT * FROM `raw_prod_mayorista_001.raw_venta`
+
+CREATE TABLE `analytics_prod_mayorista_003.DIM_VENTA`(
+  VENTA_KEY INT64,
+  COD_VENTA STRING(13),
+  ESTADO STRING(13)
+)
+
+
+INSERT INTO `analytics_prod_mayorista_003.DIM_VENTA` (VENTA_KEY,COD_VENTA, ESTADO)
+SELECT
+    ROW_NUMBER() OVER () AS VENTA_KEY,
+    cod_documento,
+    ESTADO
+    FROM `raw_prod_mayorista_001.raw_venta`
+
+
+
+
+-----------------------------------------------
+
+SELECT * FROM `raw_prod_mayorista_001.raw_tipo_documento`
+
+
+CREATE TABLE `analytics_prod_mayorista_003.DIM_DOCUMENTO`(
+  DOCUMENTO_KEY INT64,
+  COD_TIPO_DOCUMENTO STRING(8),
+  NOMBRE_TIPO_DOCUMENTO STRING(26)
+)
+
+INSERT INTO `analytics_prod_mayorista_003.DIM_DOCUMENTO` (DOCUMENTO_KEY,COD_TIPO_DOCUMENTO, NOMBRE_TIPO_DOCUMENTO)
+SELECT
+    ROW_NUMBER() OVER () AS DOCUMENTO_KEY,
+    cod_tipo_documento,
+    nombre_tipo_documento
+    FROM `raw_prod_mayorista_001.raw_tipo_documento`
+
+
+
+-----------------------------------------------
+
+
+
+SELECT * FROM `analytics_prod_mayorista_003.DIM_PERIODO`;
+
+
+CREATE TABLE `analytics_prod_mayorista_003.DIM_PERIODO`(
+  COD_PERIODO STRING(20),
+  ANNIO STRING(4),
+  MES STRING(2),
+  DIA STRING(2)
+)
+
+
+
+INSERT INTO `analytics_prod_mayorista_003.DIM_PERIODO` (COD_PERIODO,ANNIO, MES, DIA)
+SELECT DISTINCT
+  IF(
+    SAFE.PARSE_DATE('%d/%m/%Y', fecha_venta) IS NOT NULL,
+    CONCAT(
+      CONCAT('20',SUBSTR(FORMAT_DATE('%y', PARSE_DATE('%d/%m/%Y', fecha_venta)), 0, 4)),
+      SUBSTR(FORMAT_DATE('%m', PARSE_DATE('%d/%m/%Y', fecha_venta)), 1, 2),
+      SUBSTR(FORMAT_DATE('%d', PARSE_DATE('%d/%m/%Y', fecha_venta)), 1, 2)
+    ),
+    NULL
+  ) AS COD_PERIODO,
+  CONCAT('20',SUBSTR(FORMAT_DATE('%y', PARSE_DATE('%d/%m/%Y', fecha_venta)), 0, 4)) AS ANNIO,
+  SUBSTR(FORMAT_DATE('%m', PARSE_DATE('%d/%m/%Y', fecha_venta)), 1, 2) AS MES,
+  SUBSTR(FORMAT_DATE('%d', PARSE_DATE('%d/%m/%Y', fecha_venta)), 1, 2) AS DIA
+FROM `raw_prod_mayorista_001.raw_venta`;
+
+
+
+CREATE OR REPLACE TABLE `analytics_prod_mayorista_003.DIM_PERIODO` AS
+SELECT *, ROW_NUMBER() OVER () AS PERIODO_KEY
+FROM `analytics_prod_mayorista_003.DIM_PERIODO`;
+
+
+-------------------------------------------
+
+SELECT * FROM `raw_prod_mayorista_001.raw_venta`;
+
+
+
+CREATE TABLE `analytics_prod_mayorista_003.DIM_CLIENTE`(
+
+  dni_cliente STRING(100),
+  distrito STRING(100),
+  departamento STRING(100),
+  ubigeo STRING(100),
+  punto_geografico STRING(100),
+  Latitud STRING(100),
+  Longitud STRING(100)
+)
+
+
+INSERT INTO `analytics_prod_mayorista_003.DIM_CLIENTE` (dni_cliente,distrito, departamento, ubigeo,punto_geografico,Latitud,Longitud)
+SELECT
+  dni_cliente,
+  distrito_cliente,
+  departamento_cliente,
+  ubigeo_cliente,
+  punto_geografico,
+  SUBSTRING(punto_geografico, 0, STRPOS(punto_geografico, ',')) AS Latitud,
+  SUBSTRING(punto_geografico, STRPOS(punto_geografico, ',') + 1) AS Longitud
+FROM `raw_prod_mayorista_001.raw_cliente`;
+
+-----------------------------------------
+
+SELECT * FROM `analytics_prod_mayorista_003.DIM_DOCUMENTO`
+
+
+CREATE TABLE `analytics_prod_mayorista_003.DIM_PRODUCTO`(
+  PRODUCTO_KEY INT64,
+  COD_PRODUCTO STRING(100),
+  NOMBRE_PRODUCTO STRING(200),
+  NOMBRE_SUBCATEGORIA STRING(100),
+  NOMBRE_CATEGORIA STRING(100)
+)
+
+
+
+INSERT INTO `analytics_prod_mayorista_003.DIM_PRODUCTO` (PRODUCTO_KEY,COD_PRODUCTO, NOMBRE_PRODUCTO, NOMBRE_SUBCATEGORIA,NOMBRE_CATEGORIA)
+SELECT
+  ROW_NUMBER() OVER () AS PRODUCTO_KEY,
+  COD_PRODUCTO,
+  NOMBRE_PRODUCTO,
+  SUBCATEGORIA_PRODUCTO,
+  CATEGORIA_PRODUCTO
+FROM `raw_prod_mayorista_001.raw_producto`;
+
+
+CREATE TABLE `analytics_prod_mayorista_003.FACT_SUPERMAYORISTA` (
+	FK_VENTA INT64,
+	--FK_CLIENTE INT NOT NULL,
+	FK_CLIENTE STRING(14),
+	FK_VENDEDOR INT64,
+	FK_BANCO INT64,
+	FK_PRODUCTO INT64,
+	FK_PERIODO INT64,
+	FK_TIPO_DOCUMENTO INT64,
+	CANTIDAD_PRODUCTO INT64,
+	PRECIO_UNIT NUMERIC
+)
+
+
+INSERT INTO `analytics_prod_mayorista_003.FACT_SUPERMAYORISTA` (FK_VENTA,FK_CLIENTE,FK_VENDEDOR,FK_BANCO,FK_PRODUCTO,FK_PERIODO,FK_TIPO_DOCUMENTO,CANTIDAD_PRODUCTO,PRECIO_UNIT)
+SELECT DISTINCT
+  X1.VENTA_KEY AS FK_VENTA_F,
+  X2.DNI_CLIENTE AS FK_CLIENTE_F,
+  X3.VENDEDOR_KEY AS FK_VENDEDOR_F,
+  7 AS FK_BANCO_F,
+  X4.PRODUCTO_KEY AS FK_PRODUCTO_F,
+  X5.PERIODO_KEY AS FK_PERIODO_F,
+  X6.DOCUMENTO_KEY AS FK_DOCUMENTO_F,
+  SAFE_CAST(Y.cantidad AS INT64),
+  SAFE_CAST(Y.precio_unitario AS NUMERIC)
+FROM `raw_prod_mayorista_001.raw_venta` X
+JOIN `raw_prod_mayorista_001.raw_detalle_venta` Y ON Y.cod_documento = X.cod_documento
+JOIN `analytics_prod_mayorista_003.DIM_VENTA`  X1 ON X1.COD_VENTA = X.cod_documento
+JOIN `analytics_prod_mayorista_003.DIM_CLIENTE` X2 ON X2.DNI_CLIENTE = X.dni_cliente
+JOIN `analytics_prod_mayorista_003.DIM_VENDEDOR` X3 ON X3.NOMBRE_VENDEDOR = X.vendedor
+JOIN `analytics_prod_mayorista_003.DIM_PRODUCTO` X4 ON X4.COD_PRODUCTO = Y.cod_producto
+JOIN `analytics_prod_mayorista_003.DIM_PERIODO` X5 ON X5.COD_PERIODO = CONCAT(
+      CONCAT('20',SUBSTR(FORMAT_DATE('%y', PARSE_DATE('%d/%m/%Y', X.fecha_venta)), 0, 4)),
+      SUBSTR(FORMAT_DATE('%m', PARSE_DATE('%d/%m/%Y', X.fecha_venta)), 1, 2),
+      SUBSTR(FORMAT_DATE('%d', PARSE_DATE('%d/%m/%Y', X.fecha_venta)), 1, 2))
+JOIN `analytics_prod_mayorista_003.DIM_DOCUMENTO` X6 ON X6.NOMBRE_TIPO_DOCUMENTO = X.nombre_tipo_documento
+ORDER BY X3.VENDEDOR_KEY;
+
+
+
+
+SELECT * FROM `analytics_prod_mayorista_003.DIM_PERIODO`
+
+SELECT CONCAT(
+      CONCAT('20',SUBSTR(FORMAT_DATE('%y', PARSE_DATE('%d/%m/%Y', X.fecha_venta)), 0, 4)),
+      SUBSTR(FORMAT_DATE('%m', PARSE_DATE('%d/%m/%Y', X.fecha_venta)), 1, 2),
+      SUBSTR(FORMAT_DATE('%d', PARSE_DATE('%d/%m/%Y', X.fecha_venta)), 1, 2)) FROM `raw_prod_mayorista_001.raw_venta` X
+
+
+
+
+
+IF(
+    SAFE.PARSE_DATE('%d/%m/%Y', X.fecha_venta) IS NOT NULL,
+    CONCAT(
+      CONCAT('20',SUBSTR(FORMAT_DATE('%y', PARSE_DATE('%d/%m/%Y', X.fecha_venta)), 0, 4)),
+      SUBSTR(FORMAT_DATE('%m', PARSE_DATE('%d/%m/%Y', X.fecha_venta)), 1, 2),
+      SUBSTR(FORMAT_DATE('%d', PARSE_DATE('%d/%m/%Y', X.fecha_venta)), 1, 2)
+    ),
+    NULL
+  )
+
+

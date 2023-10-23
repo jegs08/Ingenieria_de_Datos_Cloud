@@ -1,0 +1,20 @@
+FLUJO DE CONTROL
+- Tarea Ejeuctar SQL -> Eduardo
+- Tarea de Flujo de datos -> Eduardo
+- Tarea Ejecutar Paquete -> Eduardo
+- Contenedor de bucles For -> Eduardo
+- Contenedor de bucles Foreach -> Eduardo
+
+FLUJO DE DATOS
+- Búsqueda -> Eduardo
+- Columna Derivada -> Eduardo
+- Combinación de mezcla -> Eduardo
+- Conversión de datos -> Aldahir
+- Origen OLE DB -> Aldahir
+- Origen de archivo plano -> Aldahir
+- Destino OLE DB -> Aldahir
+- Destino de archivo plano -> Aldahir
+- División condicional -> Aldahir
+- Ordenar -> Aldahir
+- Multifusión -> Aldahir
+- Unión de todo -> Aldahir

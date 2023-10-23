@@ -1,0 +1,134 @@
+/*BANCO*/
+
+CREATE OR REPLACE EXTERNAL TABLE `dgc-data-project.raw_prod_mayorista_001.raw_banco` (
+  cod_banco STRING,
+  nombre_banco STRING,
+  comision STRING
+)
+OPTIONS
+(
+  format = 'CSV',
+  uris = ['gs://001-streamworkers-mayorista-bd-prod/RAW_ZONE/banco.csv'],
+  skip_leading_rows = 1/*,
+  allow_quoted_newlines = True,
+  field_delimiter = ',',
+  preserve_ascii_control_characters = True*/
+);
+
+
+/*CLIENTE*/
+
+CREATE OR REPLACE EXTERNAL TABLE `dgc-data-project.raw_prod_mayorista_001.raw_cliente` (
+  dni_cliente STRING,
+  sexo_cliente STRING,
+  fecha_nacimiento STRING,
+  departamento_cliente STRING,
+  distrito_cliente STRING,
+  ubigeo_cliente STRING,
+  punto_geografico STRING
+)
+OPTIONS
+(
+  format = 'CSV',
+  uris = ['gs://001-streamworkers-mayorista-bd-prod/RAW_ZONE/cliente.csv'],
+  skip_leading_rows = 1,
+  field_delimiter = ';'/*,
+  allow_quoted_newlines = True,
+  preserve_ascii_control_characters = True*/
+);
+
+
+/*DETALLE_VENTA*/
+
+CREATE OR REPLACE EXTERNAL TABLE `dgc-data-project.raw_prod_mayorista_001.raw_detalle_venta` (
+  cod_documento STRING,
+  cod_producto STRING,
+  precio_unitario STRING,
+  cantidad STRING
+)
+OPTIONS
+(
+  format = 'CSV',
+  uris = ['gs://001-streamworkers-mayorista-bd-prod/RAW_ZONE/detalle_venta.csv'],
+  skip_leading_rows = 1,
+  field_delimiter = ';'/*,
+  allow_quoted_newlines = True,
+  preserve_ascii_control_characters = True*/
+);
+
+
+/*PRODUCTO*/
+
+CREATE OR REPLACE EXTERNAL TABLE `dgc-data-project.raw_prod_mayorista_001.raw_producto` (
+  cod_producto STRING,
+  nombre_producto STRING,
+  categoria_producto STRING,
+  subcategoria_producto STRING,
+  precio_unitario STRING
+)
+OPTIONS
+(
+  format = 'CSV',
+  uris = ['gs://001-streamworkers-mayorista-bd-prod/RAW_ZONE/producto.csv'],
+  skip_leading_rows = 1,
+  field_delimiter = ';'/*,
+  allow_quoted_newlines = True,
+  preserve_ascii_control_characters = True*/
+);
+
+
+/*TIPO_DOCUMENTO*/
+
+CREATE OR REPLACE EXTERNAL TABLE `dgc-data-project.raw_prod_mayorista_001.raw_tipo_documento` (
+  cod_tipo_documento STRING,
+  nombre_tipo_documento STRING
+)
+OPTIONS
+(
+  format = 'CSV',
+  uris = ['gs://001-streamworkers-mayorista-bd-prod/RAW_ZONE/tipo_documento.csv'],
+  skip_leading_rows = 1,
+  field_delimiter = ';'/*,
+  allow_quoted_newlines = True,
+  preserve_ascii_control_characters = True*/
+);
+
+
+/*VENDEDOR*/
+
+CREATE OR REPLACE EXTERNAL TABLE `dgc-data-project.raw_prod_mayorista_001.raw_vendedor` (
+  cod_vendedor STRING,
+  apellido_vendedor STRING,
+  nombre_supervisor STRING,
+  supervisor STRING
+)
+OPTIONS
+(
+  format = 'CSV',
+  uris = ['gs://001-streamworkers-mayorista-bd-prod/RAW_ZONE/vendedor.csv'],
+  skip_leading_rows = 1,
+  field_delimiter = ';'/*,
+  allow_quoted_newlines = True,
+  preserve_ascii_control_characters = True*/
+);
+
+
+/*VENTA*/
+
+CREATE OR REPLACE EXTERNAL TABLE `dgc-data-project.raw_prod_mayorista_001.raw_venta` (
+  cod_documento STRING,
+  dni_cliente STRING,
+  vendedor STRING,
+  nombre_tipo_documento STRING,
+  estado STRING,
+  fecha_venta STRING
+)
+OPTIONS
+(
+  format = 'CSV',
+  uris = ['gs://001-streamworkers-mayorista-bd-prod/RAW_ZONE/venta.csv'],
+  skip_leading_rows = 1,
+  field_delimiter = ';'/*,
+  allow_quoted_newlines = True,
+  preserve_ascii_control_characters = True*/
+);

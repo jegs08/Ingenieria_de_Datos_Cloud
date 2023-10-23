@@ -1,0 +1,5 @@
+cod_tipo_documento,nombre_tipo_documento
+DOC001,BOLETA
+DOC002,FACTURA
+DOC003,NOTA CREDITO
+DOC004,NOTA DEBITO

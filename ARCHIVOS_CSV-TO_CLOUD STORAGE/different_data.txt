@@ -1,0 +1,16 @@
+( [ProductName] != [DGC_ProductName] ) || ( [SupplierID] !=  [DGC_SupplierID] ) || ( [CategoryID] !=  [DGC_CategoryID] ) || ( [QuantityPerUnit] !=  [DGC_QuantityPerUnit] ) || ([UnitPrice] != [DGC_UnitPrice] ) || ([UnitsInStock] !=  [DGC_UnitsInStock]) || ([UnitsOnOrder] !=  [DGC_UnitsOnOrder]) || ( [ReorderLevel] !=  [DGC_ReorderLevel]) || ( [Discontinued] != [DGC_Discontinued] )
+
+
+
+UPDATE DIM_PRODUCTS
+SET
+ProductName = ?,
+SupplierID = ?,
+CategoryID = ?,
+QuantityPerUnit = ?,
+UnitPrice = ?,
+UnitsInStock = ?,
+UnitsOnOrder = ?,
+ReorderLevel = ?,
+Discontinued = ?
+WHERE ProductID = ?
