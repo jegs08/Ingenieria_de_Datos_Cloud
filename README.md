@@ -7,6 +7,7 @@
 </div>
 
 ## Tabla de contenido
+- [Creación del bucket](#Cloud_Storage)
 - [ETL "Supermayorista GCP"](#ETL-SupermayoristaGCP)
   - [FLUJO_DIM_DOCUMENTO](#FLUJO_DIM_DOCUMENTO)
   - [FLUJO_DIM_VENDEDOR](#FLUJO_DIM_VENDEDOR)
@@ -20,6 +21,12 @@
   - [FLUJO_DIM_DISTRITO](#FLUJO_DIM_DISTRITO)
   - [FLUJO_DIM_CLIENTE](#FLUJO_DIM_CLIENTE)
   - [FLUJO_FACT_SUPERMAYORISTA](#FLUJO_FACT_SUPERMAYORISTA)
+
+# Cloud_Storage
+
+<div align="center"> 
+  <img src="readme_img/CloudStorage_0.png" width="800px" height="500px">
+</div>
 
 # ETL **_SupermayoristaGCP_**
 
