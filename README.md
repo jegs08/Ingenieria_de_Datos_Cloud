@@ -7,7 +7,7 @@
 </div>
 
 ## Tabla de contenido
-- [ETL "Supermayorista GCP"](#ETL-Supermayorista GCP)
+- [ETL "Supermayorista GCP"](#ETL-SupermayoristaGCP)
   - [FLUJO_DIM_DOCUMENTO](#FLUJO_DIM_DOCUMENTO)
   - [FLUJO_DIM_VENDEDOR](#FLUJO_DIM_VENDEDOR)
   - [FLUJO_DIM_VENTA](#FLUJO_DIM_VENTA)
@@ -21,7 +21,7 @@
   - [FLUJO_DIM_CLIENTE](#FLUJO_DIM_CLIENTE)
   - [FLUJO_FACT_SUPERMAYORISTA](#FLUJO_FACT_SUPERMAYORISTA)
 
-# ETL **_Supermayorista GCP_**
+# ETL **_SupermayoristaGCP_**
 
 <div align="center"> 
   <img src="readme_img/SSIS_0.png" width="800px" height="500px">
