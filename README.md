@@ -1,9 +1,9 @@
 <div align="center">
-  <h1>Supermayorista con GCP <b><i><a href="https://www.ibm.com/docs/es/ida/9.1.2?topic=schemas-snowflake" target="_blank">[Modelo Estrella]</a></i></b></h1>
+  <h1>Supermayorista con GCP <b><i><a href="[https://www.ibm.com/docs/es/ida/9.1.2?topic=schemas-snowflake](https://es.wikipedia.org/wiki/Esquema_en_estrella)" target="_blank">[Modelo Estrella]</a></i></b></h1>
 </div>
 
 <div align="center"> 
-  <img src="readme_img/ssis-ingenieria_de_datos.png" width="">
+  <img src="readme_img/GCP-0.png" width="">
 </div>
 
 ## Tabla de contenido
