@@ -3,7 +3,7 @@
 </div>
 
 <div align="center"> 
-  <img src="readme_img/GCP-0.png" width="300px" height="50px">
+  <img src="readme_img/GCP-0.png" width="400px" height="100px">
 </div>
 
 ## Tabla de contenido
