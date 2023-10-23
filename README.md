@@ -62,6 +62,7 @@
 <div align="center"> 
   <img src="readme_img/ETL-documento.png" width="800px" height="500px">
 </div>
+
 ## FLUJO_DIM_VENDEDOR
 
 <div align="center"> 
