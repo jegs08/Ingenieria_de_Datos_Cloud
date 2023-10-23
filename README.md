@@ -54,7 +54,7 @@
 # ETL **_SupermayoristaGCP_**
 
 <div align="center"> 
-  <img src="readme_img/SSIS_0.png" width="800px" height="500px">
+  <img src="readme_img/ETL-0.png" width="800px" height="500px">
 </div>
 
 ## FLUJO_DIM_DOCUMENTO
