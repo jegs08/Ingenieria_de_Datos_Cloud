@@ -8,6 +8,7 @@
 
 ## Tabla de contenido
 - [Creación del bucket](#Cloud_Storage)
+- [Creación de los datasets en BigQuery](#BigQuery)
 - [ETL "Supermayorista GCP"](#ETL-SupermayoristaGCP)
   - [FLUJO_DIM_DOCUMENTO](#FLUJO_DIM_DOCUMENTO)
   - [FLUJO_DIM_VENDEDOR](#FLUJO_DIM_VENDEDOR)
@@ -34,6 +35,20 @@
 
 <div align="center"> 
   <img src="readme_img/CloudStorage_carpetas_2.png" width="900px" height="500px">
+</div>
+
+# BigQuery
+
+<div align="center"> 
+  <img src="readme_img/bigquery_datasets_1.png" width="900px" height="500px">
+</div>
+
+<div align="center"> 
+  <img src="readme_img/bigquery_datasets_2.png" width="900px" height="500px">
+</div>
+
+<div align="center"> 
+  <img src="readme_img/bigquery_datasets_3.png" width="900px" height="500px">
 </div>
 
 # ETL **_SupermayoristaGCP_**
