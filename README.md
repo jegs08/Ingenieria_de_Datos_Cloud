@@ -28,6 +28,14 @@
   <img src="readme_img/CloudStorage.png" width="900px" height="500px">
 </div>
 
+<div align="center"> 
+  <img src="readme_img/CloudStorage_carpetas_1.png" width="900px" height="500px">
+</div>
+
+<div align="center"> 
+  <img src="readme_img/CloudStorage_carpetas_2.png" width="900px" height="500px">
+</div>
+
 # ETL **_SupermayoristaGCP_**
 
 <div align="center"> 
