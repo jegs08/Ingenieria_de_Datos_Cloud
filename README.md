@@ -86,41 +86,21 @@
   <img src="readme_img/ETL-periodo.png" width="800px" height="500px">
 </div>
 
- ## FLUJO_DIM_CATEGORIA
-  
-<div align="center"> 
-  <img src="readme_img/SSIS_categoria.png" width="800px" height="500px">
-</div>
-
-## FLUJO_DIM_SUBCATEGORIA
-
-<div align="center"> 
-  <img src="readme_img/ETL-subcategoria.png" width="800px" height="500px">
-</div>
-
 ## FLUJO_DIM_PRODUCTO
 
 <div align="center"> 
   <img src="readme_img/ETL-producto.png" width="800px" height="500px">
 </div>
 
-## FLUJO_DIM_DEPARTAMENTO
-
-## FLUJO_DIM_DISTRITO
-
-<div align="center"> 
-  <img src="readme_img/SSIS_distrito.png" width="800px" height="500px">
-</div>
-
 ## FLUJO_DIM_CLIENTE
 
 <div align="center"> 
-  <img src="readme_img/SSIS_cliente.png" width="800px" height="500px">
+  <img src="readme_img/ETL-cliente.png" width="800px" height="500px">
 </div>
 
 ## FLUJO_FACT_SUPERMAYORISTA
 
 <div align="center"> 
-  <img src="readme_img/SSIS_fact_1.png" width="800px" height="500px">
+  <img src="readme_img/ETL-fact.png" width="800px" height="500px">
 </div>
 
