@@ -60,30 +60,30 @@
 ## FLUJO_DIM_DOCUMENTO
 
 <div align="center"> 
-  <img src="readme_img/SSIS_documento.png" width="800px" height="500px">
+  <img src="readme_img/ETL-documento.png" width="800px" height="500px">
 </div>
 ## FLUJO_DIM_VENDEDOR
 
 <div align="center"> 
-  <img src="readme_img/SSIS_vendedor.png" width="800px" height="500px">
+  <img src="readme_img/ETL-vendedor.png" width="800px" height="500px">
 </div>
 
 ## FLUJO_DIM_VENTA
 
 <div align="center"> 
-  <img src="readme_img/SSIS_venta.png" width="800px" height="500px">
+  <img src="readme_img/ETL-venta.png" width="800px" height="500px">
 </div>
 
 ## FLUJO_DIM_BANCO
   
 <div align="center"> 
-  <img src="readme_img/SSIS_banco.png" width="800px" height="500px">
+  <img src="readme_img/ETL-banco.png" width="800px" height="500px">
 </div>
 
  ## FLUJO_DIM_PERIODO
 
 <div align="center"> 
-  <img src="readme_img/SSIS_periodo.png" width="800px" height="500px">
+  <img src="readme_img/ETL-periodo.png" width="800px" height="500px">
 </div>
 
  ## FLUJO_DIM_CATEGORIA
@@ -95,13 +95,13 @@
 ## FLUJO_DIM_SUBCATEGORIA
 
 <div align="center"> 
-  <img src="readme_img/SSIS_subcategoria.png" width="800px" height="500px">
+  <img src="readme_img/ETL-subcategoria.png" width="800px" height="500px">
 </div>
 
 ## FLUJO_DIM_PRODUCTO
 
 <div align="center"> 
-  <img src="readme_img/SSIS_producto.png" width="800px" height="500px">
+  <img src="readme_img/ETL-producto.png" width="800px" height="500px">
 </div>
 
 ## FLUJO_DIM_DEPARTAMENTO
