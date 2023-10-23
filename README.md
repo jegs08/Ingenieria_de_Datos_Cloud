@@ -25,7 +25,7 @@
 # Cloud_Storage
 
 <div align="center"> 
-  <img src="readme_img/CloudStorage_0.png" width="800px" height="500px">
+  <img src="readme_img/CloudStorage.png" width="800px" height="500px">
 </div>
 
 # ETL **_SupermayoristaGCP_**
